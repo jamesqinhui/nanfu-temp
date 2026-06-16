@@ -12,22 +12,22 @@
             font-family: Arial, Helvetica, sans-serif;
         }
         html, body {
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
-            /* 适配原图横版效果：背景图铺满屏幕、从左侧开始显示，右侧露出电池主体 */
+            /* 核心修正：图片靠右对齐，宽度铺满高度裁切，复刻原图左右分栏 */
             background-image: url("battery.png");
             background-repeat: no-repeat;
-            background-position: left center;
-            background-size: 100% auto;
+            background-position: right center;
+            background-size: auto 100%;
             background-color: #0095dd;
             color: #ffffff;
         }
-        /* 左侧文字固定区域，和原图留白距离完全一致 */
+        /* 左侧文字固定区域，距离左边4%留白，垂直居中 */
         .left-text-block {
             position: absolute;
             top: 50%;
-            left: 45px;
+            left: 4%;
             transform: translateY(-50%);
             max-width: 760px;
         }
