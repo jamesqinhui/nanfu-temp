@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- 移动端自适应核心标签，缺一不可 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NANFU - Website Under Construction</title>
     <style>
@@ -12,24 +11,51 @@
             box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
         }
-        /* PC 桌面端布局（宽度大于992px） */
         html, body {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            width: 100%;
+            min-height: 100vh;
             background-color: #0094DD;
-            background-image: url("battery.png");
-            background-repeat: no-repeat;
-            background-position: 82% center;
-            background-size: auto 100%;
             color: #ffffff;
         }
-        .left-text-block {
-            position: absolute;
-            top: 50%;
-            left: 4%;
-            transform: translateY(-50%);
-            max-width: 740px;
+        /* PC端布局 */
+        @media screen and (min-width: 993px) {
+            body {
+                height: 100vh;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+            }
+            .text-wrap {
+                width: 45%;
+                padding-left: 4%;
+            }
+            .img-wrap {
+                flex: 1;
+                height: 100%;
+                background-image: url("battery.png");
+                background-repeat: no-repeat;
+                background-position: center right;
+                background-size: auto 100%;
+            }
+        }
+        /* 手机端布局，单独元素放图，不会重复重叠 */
+        @media screen and (max-width: 992px) {
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding-bottom: 60px;
+            }
+            .img-wrap {
+                width: 100%;
+                padding-top: 180%;
+                background-image: url("battery.png");
+                background-repeat: no-repeat;
+                background-position: center top;
+                background-size: 100% auto;
+            }
+            .text-wrap {
+                padding: 30px 20px 0;
+            }
         }
         .desc-text {
             font-size: 28px;
@@ -51,7 +77,7 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* 全局悬浮按钮 */
+        /* 悬浮按钮 */
         .float-translate {
             position: fixed;
             right: 15px;
@@ -92,24 +118,11 @@
             text-align: center;
             line-height: 22px;
         }
-
-        /* ========== 手机/平板自适应规则（宽度≤992px自动切换） ========== */
+        /* 手机按钮修正 */
         @media screen and (max-width: 992px) {
-            html, body {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: auto;
-                overflow-x: hidden;
-                /* 手机：图片放在顶部，宽度铺满屏幕 */
-                background-position: center top;
-                background-size: 100% auto;
-                padding-top: 120vw;
-            }
-            .left-text-block {
-                position: static;
+            .float-translate {
+                top: 20px;
                 transform: none;
-                padding: 0 20px 80px;
-                max-width: 100%;
             }
             .desc-text {
                 font-size: 20px;
@@ -123,16 +136,14 @@
                 font-size: 18px;
                 margin-right: 12px;
             }
-            /* 手机端翻译按钮移到右上角，不遮挡文字 */
-            .float-translate {
-                top: 20px;
-                transform: none;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="left-text-block">
+    <!-- PC左右分栏 / 手机上下：图片容器 -->
+    <div class="img-wrap"></div>
+    <!-- 文字容器 -->
+    <div class="text-wrap">
         <div class="desc-text">
             The website is currently under upgrade and construction...<br>
             We apologize for any inconvenience caused<br>
