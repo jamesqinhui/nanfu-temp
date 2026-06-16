@@ -15,21 +15,28 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            /* 核心修正：图片靠右对齐，宽度铺满高度裁切，复刻原图左右分栏 */
-            background-image: url("battery.png");
-            background-repeat: no-repeat;
-            background-position: right center;
-            background-size: auto 100%;
+            display: flex;
+        }
+        /* 左侧纯蓝色文字区域，固定宽度，永远不出现图片 */
+        .text-side {
+            width: 42%;
+            height: 100%;
             background-color: #0095dd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
             color: #ffffff;
         }
-        /* 左侧文字固定区域，距离左边4%留白，垂直居中 */
-        .left-text-block {
-            position: absolute;
-            top: 50%;
-            left: 4%;
-            transform: translateY(-50%);
-            max-width: 760px;
+        /* 右侧图片区域，完整放电池竖图，靠右填充 */
+        .img-side {
+            flex: 1;
+            height: 100%;
+            background-image: url("battery.png");
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: auto 100%;
+            background-color: #0095dd;
         }
         .desc-text {
             font-size: 28px;
@@ -51,7 +58,7 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* 侧边翻译悬浮按钮 */
+        /* 侧边悬浮按钮（全局固定，不受左右分栏影响） */
         .float-translate {
             position: fixed;
             right: 15px;
@@ -67,7 +74,6 @@
             color: #222;
             font-weight: bold;
         }
-        /* 右下角客服按钮 */
         .float-service-btn {
             position: fixed;
             bottom: 20px;
@@ -96,7 +102,8 @@
     </style>
 </head>
 <body>
-    <div class="left-text-block">
+    <!-- 左侧纯蓝色文字区 -->
+    <div class="text-side">
         <div class="desc-text">
             The website is currently under upgrade and construction...<br>
             We apologize for any inconvenience caused<br>
@@ -111,6 +118,10 @@
             <a href="https://www.linkedin.com/company/nanfuhuanyu" target="_blank">Linkedin</a>
         </div>
     </div>
+    <!-- 右侧电池图片区 -->
+    <div class="img-side"></div>
+
+    <!-- 全局悬浮按钮 -->
     <div class="float-translate">A</div>
     <div class="float-service-btn">
         <span class="red-notice-badge">1</span>
