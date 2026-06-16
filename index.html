@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- 移动端自适应核心标签，必须保留 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NANFU - Website Under Construction</title>
     <style>
@@ -15,15 +16,14 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            /* 精准匹配原图背景蓝色，无肉眼色差 */
             background-color: #0094DD;
             background-image: url("battery.png");
             background-repeat: no-repeat;
-            /* 横向82%位置，复刻原图左右留白比例 */
             background-position: 82% center;
             background-size: auto 100%;
             color: #ffffff;
         }
+        /* PC端左侧文字块 */
         .left-text-block {
             position: absolute;
             top: 50%;
@@ -51,7 +51,7 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* 悬浮按钮 */
+        /* 悬浮按钮全局通用 */
         .float-translate {
             position: fixed;
             right: 15px;
@@ -92,6 +92,42 @@
             text-align: center;
             line-height: 22px;
         }
+
+        /* ========== 手机端适配（屏幕宽度小于992px自动生效） ========== */
+        @media screen and (max-width: 992px) {
+            html, body {
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+                /* 手机：图片放顶部居中，宽度铺满 */
+                background-position: center top;
+                background-size: 100% auto;
+                padding-top: 110vw;
+            }
+            .left-text-block {
+                position: static;
+                transform: none;
+                padding: 40px 20px 60px;
+                max-width: 100%;
+            }
+            .desc-text {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+            .email-row {
+                font-size: 16px;
+                margin-bottom: 22px;
+            }
+            .social-group a {
+                font-size: 19px;
+                margin-right: 14px;
+            }
+            /* 手机端翻译按钮挪到右上角，避免遮挡文字 */
+            .float-translate {
+                top: 20px;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -110,6 +146,7 @@
             <a href="https://www.linkedin.com/company/nanfuhuanyu" target="_blank">Linkedin</a>
         </div>
     </div>
+
     <div class="float-translate">A</div>
     <div class="float-service-btn">
         <span class="red-notice-badge">1</span>
