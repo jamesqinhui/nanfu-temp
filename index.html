@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- 移动端自适应核心标签，必须保留 -->
+    <!-- 移动端自适应核心标签，缺一不可 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NANFU - Website Under Construction</title>
     <style>
@@ -12,6 +12,7 @@
             box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
         }
+        /* PC 桌面端布局（宽度大于992px） */
         html, body {
             width: 100vw;
             height: 100vh;
@@ -23,7 +24,6 @@
             background-size: auto 100%;
             color: #ffffff;
         }
-        /* PC端左侧文字块 */
         .left-text-block {
             position: absolute;
             top: 50%;
@@ -51,7 +51,7 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* 悬浮按钮全局通用 */
+        /* 全局悬浮按钮 */
         .float-translate {
             position: fixed;
             right: 15px;
@@ -93,36 +93,37 @@
             line-height: 22px;
         }
 
-        /* ========== 手机端适配（屏幕宽度小于992px自动生效） ========== */
+        /* ========== 手机/平板自适应规则（宽度≤992px自动切换） ========== */
         @media screen and (max-width: 992px) {
             html, body {
-                overflow-y: auto;
                 height: auto;
                 min-height: 100vh;
-                /* 手机：图片放顶部居中，宽度铺满 */
+                overflow-y: auto;
+                overflow-x: hidden;
+                /* 手机：图片放在顶部，宽度铺满屏幕 */
                 background-position: center top;
                 background-size: 100% auto;
-                padding-top: 110vw;
+                padding-top: 120vw;
             }
             .left-text-block {
                 position: static;
                 transform: none;
-                padding: 40px 20px 60px;
+                padding: 0 20px 80px;
                 max-width: 100%;
             }
             .desc-text {
                 font-size: 20px;
-                margin-bottom: 25px;
+                margin-bottom: 24px;
             }
             .email-row {
                 font-size: 16px;
-                margin-bottom: 22px;
+                margin-bottom: 20px;
             }
             .social-group a {
-                font-size: 19px;
-                margin-right: 14px;
+                font-size: 18px;
+                margin-right: 12px;
             }
-            /* 手机端翻译按钮挪到右上角，避免遮挡文字 */
+            /* 手机端翻译按钮移到右上角，不遮挡文字 */
             .float-translate {
                 top: 20px;
                 transform: none;
