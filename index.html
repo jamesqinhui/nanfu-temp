@@ -17,26 +17,27 @@
             overflow: hidden;
             display: flex;
         }
-        /* 左侧纯蓝色文字区域，固定宽度，永远不出现图片 */
+        /* 左侧文字区 精准匹配图片蓝色底色 */
         .text-side {
-            width: 42%;
+            width: 45%;
             height: 100%;
-            background-color: #0095dd;
+            background-color: #0094DD;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-left: 50px;
             color: #ffffff;
         }
-        /* 右侧图片区域，完整放电池竖图，靠右填充 */
+        /* 右侧图片容器：内部居中显示图片，不贴最右边缘 */
         .img-side {
             flex: 1;
             height: 100%;
+            background-color: #0094DD;
             background-image: url("battery.png");
             background-repeat: no-repeat;
-            background-position: center right;
+            /* 图片在右侧区块里 水平+垂直居中 */
+            background-position: center center;
             background-size: auto 100%;
-            background-color: #0095dd;
         }
         .desc-text {
             font-size: 28px;
@@ -58,7 +59,7 @@
             text-decoration: none;
             font-weight: 600;
         }
-        /* 侧边悬浮按钮（全局固定，不受左右分栏影响） */
+        /* 悬浮按钮固定全局 */
         .float-translate {
             position: fixed;
             right: 15px;
@@ -102,7 +103,7 @@
     </style>
 </head>
 <body>
-    <!-- 左侧纯蓝色文字区 -->
+    <!-- 左侧文字蓝色区域 -->
     <div class="text-side">
         <div class="desc-text">
             The website is currently under upgrade and construction...<br>
@@ -118,10 +119,10 @@
             <a href="https://www.linkedin.com/company/nanfuhuanyu" target="_blank">Linkedin</a>
         </div>
     </div>
-    <!-- 右侧电池图片区 -->
+    <!-- 右侧图片区域，图片在区块内部居中 -->
     <div class="img-side"></div>
 
-    <!-- 全局悬浮按钮 -->
+    <!-- 侧边悬浮控件 -->
     <div class="float-translate">A</div>
     <div class="float-service-btn">
         <span class="red-notice-badge">1</span>
